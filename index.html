@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sockmania</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      :root {
+        --color-green: rgb(60 110 113);
+        --color-blue: rgb(40 75 99);
+        --color-white: rgb(255 255 255);
+        --color-black: rgb(53 53 53);
+        --color-gray: rgb(217 217 217);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="w-full px-2 py-4">
+      <div class="w-full flex justify-between items-center">
+        <h2 class="text-2xl font-bold">Sockmania</h2>
+        <div class="menu-content flex gap-3 items-center">
+          <a href="/" class="text-sm font-semibold">Iniciar Sesión</a>
+          <i data-lucide="circle-user-round" class="w-10 h-10"></i>
+          <i data-lucide="menu" class="w-8 h-8"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main class="w-full px-2 py-14">
+      <div class="w-full flex flex-col items-center gap-6">
+        <div class="flex flex-col items-center">
+          <h1 class="text-4xl font-bold">SOCKMANIA</h1>
+          <h2 class="text-2xl font-semibold">PERSONALIZA TUS PIES</h2>
+        </div>
+        <button
+          class="w-max h-max py-1.5 px-4 bg-purple-700 text-white rounded-lg cursor-pointer"
+        >
+          Novedades
+        </button>
+      </div>
+    </main>
+
+    <!-- Services -->
+    <section class="w-full px-2 py-14">
+      <div
+        class="w-full flex flex-col items-center gap-2"
+        x-data="{ features: [] }"
+        x-init="features = [
+            { icon: 'shopping-cart', title: 'Envió Gratis', description: 'Por pedidos superiores a 30€.', subtitle: 'Envíos en 48/72 horas.' },
+            { icon: 'truck', title: 'Crea tus propios diseños', description: 'Personaliza tus socks.', subtitle: 'Genera ingresos con tus creaciones.' },
+            { icon: 'credit-card', title: 'Hecho en España', description: 'Calcetin fabricado en estructura deportiva, sin costuras, se adapta perfectamente al pie, no se desliza, no aprieta.', subtitle: '' }
+        ];
+        $nextTick(() => lucide.createIcons());
+        "
+      >
+        <template x-for="(feature, index) in features" :key="index">
+          <article class="box flex flex-col items-center gap-4">
+            <div class="box-img">
+              <i :data-lucide="feature.icon" class="w-16 h-auto"></i>
+            </div>
+            <div class="box-content">
+              <h3 class="text-xl font-semibold text-center uppercase">
+                <span x-text="feature.title"></span>
+              </h3>
+              <p class="text-md text-center">
+                <span x-text="feature.description"></span> <br />
+                <span x-text="feature.subtitle"></span>
+              </p>
+            </div>
+          </article>
+        </template>
+      </div>
+    </section>
+
+    <!-- Destactado -->
+    <section class="w-full px-2 py-14">
+      <div class="w-full flex flex-col items-center gap-8">
+        <h2 class="text-3xl font-semibold uppercase">Servicios</h2>
+        <div
+          class="w-full flex flex-col items-center gap-4"
+          x-data="{ products: [] }"
+          x-init="products = [
+            {img: 'barcode', title: 'Flamencos', price: 10.99},
+            {img: 'scan-barcode', title: 'Usain Bolt', price: 10.99},
+            {img: 'scan-line', title: 'Rio 2', price: 10.99},
+            {img: 'chart-no-axes-gantt', title: 'Pacman', price: 10.99},
+          ];
+          $nextTick(() => lucide.createIcons());
+          "
+        >
+          <template x-for="(p, index) in products" :key="index">
+            <article class="box flex flex-col items-center gap-4">
+              <div class="box-img">
+                <i :data-lucide="p.img" class="w-16 h-auto"></i>
+              </div>
+              <div class="box-content">
+                <h3 class="text-xl font-semibold text-center uppercase">
+                  <span x-text="p.title"></span>
+                </h3>
+                <p class="text-md text-center">
+                  <span x-text="p.price"></span>
+                  <span>€</span>
+                </p>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="w-full px-2 py-14 bg-purple-700 text-white">
+      <div class="w-full flex flex-col items-center gap-6">
+        <div class="flex flex-col gap-2 text-center">
+          <h2 class="text-2xl font-semibold uppercase">
+            Calcetines Invierno 2025
+          </h2>
+          <p class="text-md font-normal">Imprecedibles para cada dia</p>
+        </div>
+        <button
+          class="w-max h-max py-1.5 px-4 bg-purple-50 text-black font-semibold rounded-lg cursor-pointer"
+          type="button"
+        >
+          Novedades
+        </button>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="w-full px-2 py-14">
+      <div class="w-full flex flex-col items-center gap-8">
+        <h2 class="text-3xl font-semibold uppercase">Servicios</h2>
+        <div
+          class="w-full flex flex-col items-center gap-6"
+          x-data="{ products: [] }"
+          x-init="products = [
+            {img: 'barcode', title: 'Series'},
+            {img: 'scan-barcode', title: 'Personajes'},
+            {img: 'scan-line', title: 'Peliculas'},
+            {img: 'chart-no-axes-gantt', title: 'Personalizados'},
+          ];
+          $nextTick(() => lucide.createIcons());
+          "
+        >
+          <template x-for="(p, index) in products" :key="index">
+            <article class="box flex flex-col items-center gap-4 relative">
+              <a href="/" class="absolute w-full h-full"></a>
+              <div class="box-img">
+                <i :data-lucide="p.img" class="w-16 h-auto"></i>
+              </div>
+              <div class="box-content">
+                <h3 class="text-xl font-semibold text-center uppercase">
+                  <span x-text="p.title"></span>
+                </h3>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner Form -->
+    <section class="w-full px-2 py-14">
+      <div class="w-full flex flex-col items-center gap-8">
+        <h2 class="text-3xl font-semibold uppercase">15% DE DESCUENTO</h2>
+        <p>en tu PRIMERA COMPRA al suscribirte a nuestras News</p>
+        <input type="text" placeholder="Email" />
+        <button
+          type="submit"
+          class="px-6 py-2 rounded-lg bg-[--color-green] cursor-pointer"
+        >
+          Enviar
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="w-full px-6 py-14 text-gray-800 flex justify-center gap-3">
+      <div class="w-full md:w-7xl flex flex-col md:flex-row justify-between">
+        <div class="flex flex-col gap-3">
+          <h1 class="text-3xl font-bold">Sock Mania</h1>
+
+          <div>
+            <p class="font-bold mb-2">Dirección</p>
+            <p class="text-sm">Avenida del mayorazgo, 28051 Madrid, Spain</p>
+          </div>
+
+          <div>
+            <p class="font-bold mb-2">Teléfono</p>
+            <p class="text-sm">644 639 729</p>
+          </div>
+
+          <div>
+            <p class="font-bold mb-2">Email</p>
+            <p class="text-sm text-blue-600 hover:text-blue-800">
+              info@socksmania.es
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <h2 class="mb-4 pb-2 text-lg font-bold">Redes Sociales</h2>
+            <div class="flex gap-2">
+              <a href="#" class="hover:opacity-75">
+                <i data-lucide="instagram" class="w-6 h-6"></i>
+              </a>
+              <a href="#" class="hover:opacity-75">
+                <i data-lucide="facebook" class="w-6 h-6"></i>
+              </a>
+              <a href="#" class="hover:opacity-75">
+                <i data-lucide="mail" class="w-6 h-6"></i>
+              </a>
+              <a href="mailto:info@socksmania.es" class="hover:opacity-75">
+                <i data-lucide="twitter" class="w-6 h-6"></i>
+              </a>
+            </div>
+          </div>
+          <h2 class="text-lg font-bold mb-4 mt-4">Productos</h2>
+          <ul class="space-y-1">
+            <li><a href="#" class="text-sm hover:underline">Ofertas</a></li>
+            <li><a href="#" class="text-sm hover:underline">Novedades</a></li>
+            <li>
+              <a href="#" class="text-sm hover:underline">Lo mas vendido</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold mb-4">Nuestra Empresa</h2>
+          <ul class="space-y-1">
+            <li>
+              <a href="#" class="text-sm hover:underline">
+                Política de envíos y devoluciones
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:underline"
+                >Política de Cookies</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:underline">
+                Condiciones sobre el diseño personalizado
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:underline"
+                >Política de privacidad
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:underline">
+                Contacte con nosotros
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-sm hover:underline">Mapa del sitio</a>
+            </li>
+            <li><a href="#" class="text-sm hover:underline">Tiendas</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
