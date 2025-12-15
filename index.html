@@ -19,86 +19,151 @@
       }
     </style>
   </head>
-  <body>
+  <body x-data="{ menuOpen: false }">
+    <!-- Banner Promocional -->
+    <section class="hidden md:block w-full px-2 py-2 bg-[var(--color-green)]">
+      <div class="flex justify-center">
+        <p class="text-sm text-white">
+          Llévate un 20% de descuento en todos nuestros calcetines de temporada.
+          ¡Solo por tiempo limitado!
+        </p>
+      </div>
+    </section>
+
     <!-- Header -->
-    <header class="w-full px-2 py-4">
-      <div class="w-full flex justify-between items-center">
-        <h2 class="text-2xl font-bold">Sockmania</h2>
-        <div class="menu-content flex gap-3 items-center">
+    <header class="w-full px-4 md:px-2 py-4 flex justify-center">
+      <div class="w-full md:max-w-7xl flex justify-between items-center">
+        <img
+          src="./images/socksmania-logo.png"
+          alt="logo sockmania"
+          class="w-40"
+        />
+
+        <nav class="hidden md:flex">
+          <ul class="flex gap-3">
+            <li class="font-semibold">
+              <a href="/">MEDIA CAÑA</a>
+            </li>
+            <li class="font-semibold">
+              <a href="/">TOBILLEROS</a>
+            </li>
+            <li class="font-semibold">
+              <a href="/">NOVEDADES</a>
+            </li>
+            <li class="font-semibold">
+              <a href="/">OFERTAS</a>
+            </li>
+            <li class="font-semibold">
+              <a href="/">PERSONALIZADOS</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
           <a href="/" class="text-sm font-semibold">Iniciar Sesión</a>
           <i data-lucide="circle-user-round" class="w-10 h-10"></i>
+          <i data-lucide="shopping-cart" class="w-10 h-10"></i>
+        </div>
+        <div class="md:hidden flex items-center gap-3">
+          <a href="/" class="text-sm font-semibold hidden sm:block"
+            >Iniciar Sesión</a
+          >
+          <i data-lucide="circle-user-round" class="w-8 h-8"></i>
           <i data-lucide="menu" class="w-8 h-8"></i>
         </div>
       </div>
     </header>
 
     <!-- Hero -->
-    <main class="w-full px-2 py-14">
-      <div class="w-full flex flex-col items-center gap-6">
-        <div class="flex flex-col items-center">
-          <h1 class="text-4xl font-bold">SOCKMANIA</h1>
-          <h2 class="text-2xl font-semibold">PERSONALIZA TUS PIES</h2>
+    <main class="w-full px-4 md:px-2 py-8 md:py-14 flex justify-center">
+      <div
+        class="w-full md:max-w-7xl flex flex-col items-center md:flex-row md:justify-between gap-6"
+      >
+        <div class="flex flex-col items-center md:items-start gap-4 md:gap-8">
+          <div class="flex flex-col items-center md:items-start gap-2">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold">
+              SOCKMANIA
+            </h1>
+            <h2 class="text-xl sm:text-2xl font-semibold">
+              PERSONALIZA TUS PIES
+            </h2>
+          </div>
+          <button
+            class="w-max h-max py-1.5 px-4 bg-[var(--color-green)] text-white font-semibold rounded-lg cursor-pointer"
+          >
+            Novedades
+          </button>
         </div>
-        <button
-          class="w-max h-max py-1.5 px-4 bg-purple-700 text-white rounded-lg cursor-pointer"
-        >
-          Novedades
-        </button>
+        <div class="hidden md:block">
+          <img src="./images/online-shopping-1-81.png" class="w-72 lg:w-96" />
+        </div>
       </div>
     </main>
 
     <!-- Services -->
-    <section class="w-full px-2 py-14">
-      <div
-        class="w-full flex flex-col items-center gap-2"
-        x-data="{ features: [] }"
-        x-init="features = [
-            { icon: 'shopping-cart', title: 'Envió Gratis', description: 'Por pedidos superiores a 30€.', subtitle: 'Envíos en 48/72 horas.' },
+    <section class="w-full px-4 md:px-2 py-8 md:py-14">
+      <div class="w-full flex flex-col items-center gap-4">
+        <h2
+          class="mb-4 text-2xl sm:text-3xl md:text-4xl font-semibold uppercase"
+        >
+          Servicios
+        </h2>
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 max-w-7xl"
+          x-data="{ features: [] }"
+          x-init="features = [
+            { icon: 'shopping-cart', title: 'Envío Gratis', description: 'Por pedidos superiores a 30€.', subtitle: 'Envíos en 48/72 horas.' },
             { icon: 'truck', title: 'Crea tus propios diseños', description: 'Personaliza tus socks.', subtitle: 'Genera ingresos con tus creaciones.' },
-            { icon: 'credit-card', title: 'Hecho en España', description: 'Calcetin fabricado en estructura deportiva, sin costuras, se adapta perfectamente al pie, no se desliza, no aprieta.', subtitle: '' }
+            { icon: 'credit-card', title: 'Hecho en España', description: 'Calcetín fabricado en estructura deportiva, sin costuras, se adapta perfectamente al pie, no se desliza, no aprieta.', subtitle: '' }
         ];
         $nextTick(() => lucide.createIcons());
         "
-      >
-        <template x-for="(feature, index) in features" :key="index">
-          <article class="box flex flex-col items-center gap-4">
-            <div class="box-img">
-              <i :data-lucide="feature.icon" class="w-16 h-auto"></i>
-            </div>
-            <div class="box-content">
-              <h3 class="text-xl font-semibold text-center uppercase">
-                <span x-text="feature.title"></span>
-              </h3>
-              <p class="text-md text-center">
-                <span x-text="feature.description"></span> <br />
-                <span x-text="feature.subtitle"></span>
-              </p>
-            </div>
-          </article>
-        </template>
+        >
+          <template x-for="(feature, index) in features" :key="index">
+            <article
+              class="box w-full max-w-xs md:w-auto md:flex-1 flex flex-col items-center gap-4 px-4"
+            >
+              <div class="box-img">
+                <i :data-lucide="feature.icon" class="w-16 h-auto"></i>
+              </div>
+              <div class="box-content">
+                <h3 class="text-xl font-semibold text-center uppercase">
+                  <span x-text="feature.title"></span>
+                </h3>
+                <p class="text-md text-center">
+                  <span x-text="feature.description"></span> <br />
+                  <span x-text="feature.subtitle"></span>
+                </p>
+              </div>
+            </article>
+          </template>
+        </div>
       </div>
     </section>
 
-    <!-- Destactado -->
-    <section class="w-full px-2 py-14">
+    <!-- Destacado -->
+    <section class="w-full px-4 md:px-2 py-8 md:py-14">
       <div class="w-full flex flex-col items-center gap-8">
-        <h2 class="text-3xl font-semibold uppercase">Servicios</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold uppercase">
+          Destacado
+        </h2>
         <div
-          class="w-full flex flex-col items-center gap-4"
+          class="w-full flex flex-wrap justify-center items-center gap-4 max-w-7xl"
           x-data="{ products: [] }"
           x-init="products = [
-            {img: 'barcode', title: 'Flamencos', price: 10.99},
-            {img: 'scan-barcode', title: 'Usain Bolt', price: 10.99},
-            {img: 'scan-line', title: 'Rio 2', price: 10.99},
-            {img: 'chart-no-axes-gantt', title: 'Pacman', price: 10.99},
+            {img: './images/calcetines1.jpg', title: 'Flamencos', price: 10.99},
+            {img: './images/calcetines2.jpg', title: 'Usain Bolt', price: 10.99},
+            {img: './images/calcetines3.jpg', title: 'Rio 2', price: 10.99},
+            {img: './images/calcetines4.jpg', title: 'Pacman', price: 10.99},
           ];
-          $nextTick(() => lucide.createIcons());
           "
         >
           <template x-for="(p, index) in products" :key="index">
-            <article class="box flex flex-col items-center gap-4">
+            <article
+              class="box flex flex-col items-center gap-4 w-full sm:w-auto"
+            >
               <div class="box-img">
-                <i :data-lucide="p.img" class="w-16 h-auto"></i>
+                <img :src="p.img" class="w-52" />
               </div>
               <div class="box-content">
                 <h3 class="text-xl font-semibold text-center uppercase">
@@ -116,44 +181,60 @@
     </section>
 
     <!-- Banner -->
-    <section class="w-full px-2 py-14 bg-purple-700 text-white">
-      <div class="w-full flex flex-col items-center gap-6">
-        <div class="flex flex-col gap-2 text-center">
-          <h2 class="text-2xl font-semibold uppercase">
-            Calcetines Invierno 2025
-          </h2>
-          <p class="text-md font-normal">Imprecedibles para cada dia</p>
+    <section
+      class="w-full px-4 md:px-2 py-8 md:py-14 flex justify-center bg-[var(--color-blue)] text-white"
+    >
+      <div
+        class="w-full md:max-w-7xl flex items-center justify-center md:justify-between gap-6"
+      >
+        <div class="flex flex-col items-center md:items-start gap-6">
+          <div class="flex flex-col items-center md:items-start">
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl font-semibold uppercase text-center md:text-left"
+            >
+              Calcetines Invierno 2025
+            </h2>
+            <p class="text-md md:text-lg text-center md:text-left">
+              Imprescindibles para cada día
+            </p>
+          </div>
+          <button
+            class="w-max h-max py-1.5 px-7 bg-purple-50 text-black font-semibold rounded-lg cursor-pointer"
+            type="button"
+          >
+            Comprar
+          </button>
         </div>
-        <button
-          class="w-max h-max py-1.5 px-4 bg-purple-50 text-black font-semibold rounded-lg cursor-pointer"
-          type="button"
-        >
-          Novedades
-        </button>
+        <div class="hidden md:block">
+          <img src="./images/calcetines-navidad.png" class="w-48" />
+        </div>
       </div>
     </section>
 
     <!-- Categories -->
-    <section class="w-full px-2 py-14">
+    <section class="w-full px-4 md:px-2 py-8 md:py-14">
       <div class="w-full flex flex-col items-center gap-8">
-        <h2 class="text-3xl font-semibold uppercase">Servicios</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold uppercase">
+          Categorías
+        </h2>
         <div
-          class="w-full flex flex-col items-center gap-6"
+          class="w-full flex flex-wrap justify-center items-center gap-6 max-w-7xl"
           x-data="{ products: [] }"
           x-init="products = [
-            {img: 'barcode', title: 'Series'},
-            {img: 'scan-barcode', title: 'Personajes'},
-            {img: 'scan-line', title: 'Peliculas'},
-            {img: 'chart-no-axes-gantt', title: 'Personalizados'},
+            {img: './images/calcetines1.jpg', title: 'Series'},
+            {img: './images/calcetines1.jpg', title: 'Personajes'},
+            {img: './images/calcetines1.jpg', title: 'Películas'},
+            {img: './images/calcetines1.jpg', title: 'Personalizados'},
           ];
-          $nextTick(() => lucide.createIcons());
           "
         >
           <template x-for="(p, index) in products" :key="index">
-            <article class="box flex flex-col items-center gap-4 relative">
+            <article
+              class="box flex flex-col items-center gap-4 relative w-full sm:w-auto"
+            >
               <a href="/" class="absolute w-full h-full"></a>
               <div class="box-img">
-                <i :data-lucide="p.img" class="w-16 h-auto"></i>
+                <img :src="p.img" class="w-52" />
               </div>
               <div class="box-content">
                 <h3 class="text-xl font-semibold text-center uppercase">
@@ -167,25 +248,47 @@
     </section>
 
     <!-- Banner Form -->
-    <section class="w-full px-2 py-14">
-      <div class="w-full flex flex-col items-center gap-8">
-        <h2 class="text-3xl font-semibold uppercase">15% DE DESCUENTO</h2>
-        <p>en tu PRIMERA COMPRA al suscribirte a nuestras News</p>
-        <input type="text" placeholder="Email" />
-        <button
-          type="submit"
-          class="px-6 py-2 rounded-lg bg-[--color-green] cursor-pointer"
+    <section class="w-full px-4 md:px-2 py-8 md:py-14">
+      <div class="w-full flex flex-col items-center gap-6 md:gap-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold uppercase text-center">
+          15% DE DESCUENTO
+        </h2>
+        <p class="text-lg sm:text-xl text-center px-4">
+          en tu PRIMERA COMPRA al suscribirte a nuestras News
+        </p>
+        <div
+          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full max-w-md px-4"
         >
-          Enviar
-        </button>
+          <input
+            type="email"
+            placeholder="Tu correo electrónico"
+            aria-label="Introduce tu correo electrónico"
+            class="w-full py-2 px-5 border-b border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[var(--color-black)] transition duration-150 ease-in-out bg-transparent"
+          />
+
+          <button
+            type="submit"
+            class="w-full sm:w-auto px-6 py-2 text-sm font-semibold text-white bg-[var(--color-green)] rounded-md focus:outline-none focus:ring-opacity-50 transition duration-150 ease-in-out cursor-pointer"
+          >
+            Enviar
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <section class="w-full px-6 py-14 text-gray-800 flex justify-center gap-3">
-      <div class="w-full md:w-7xl flex flex-col md:flex-row justify-between">
-        <div class="flex flex-col gap-3">
-          <h1 class="text-3xl font-bold">Sock Mania</h1>
+    <footer
+      class="w-full px-6 py-8 md:py-14 text-gray-800 flex justify-center gap-3"
+    >
+      <div
+        class="w-full md:max-w-7xl flex flex-col md:flex-row justify-between items-start gap-8 md:gap-6"
+      >
+        <div class="flex flex-col gap-3 w-full md:w-auto">
+          <img
+            src="./images/socksmania-logo.png"
+            alt="logo sockmania"
+            class="w-40"
+          />
 
           <div>
             <p class="font-bold mb-2">Dirección</p>
@@ -205,35 +308,18 @@
           </div>
         </div>
 
-        <div>
-          <div>
-            <h2 class="mb-4 pb-2 text-lg font-bold">Redes Sociales</h2>
-            <div class="flex gap-2">
-              <a href="#" class="hover:opacity-75">
-                <i data-lucide="instagram" class="w-6 h-6"></i>
-              </a>
-              <a href="#" class="hover:opacity-75">
-                <i data-lucide="facebook" class="w-6 h-6"></i>
-              </a>
-              <a href="#" class="hover:opacity-75">
-                <i data-lucide="mail" class="w-6 h-6"></i>
-              </a>
-              <a href="mailto:info@socksmania.es" class="hover:opacity-75">
-                <i data-lucide="twitter" class="w-6 h-6"></i>
-              </a>
-            </div>
-          </div>
-          <h2 class="text-lg font-bold mb-4 mt-4">Productos</h2>
+        <div class="w-full md:w-auto">
+          <h2 class="text-lg font-bold mb-4">Productos</h2>
           <ul class="space-y-1">
             <li><a href="#" class="text-sm hover:underline">Ofertas</a></li>
             <li><a href="#" class="text-sm hover:underline">Novedades</a></li>
             <li>
-              <a href="#" class="text-sm hover:underline">Lo mas vendido</a>
+              <a href="#" class="text-sm hover:underline">Lo más vendido</a>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div class="w-full md:w-auto">
           <h2 class="text-lg font-bold mb-4">Nuestra Empresa</h2>
           <ul class="space-y-1">
             <li>
@@ -267,8 +353,25 @@
             <li><a href="#" class="text-sm hover:underline">Tiendas</a></li>
           </ul>
         </div>
+        <div class="w-full md:w-auto">
+          <h2 class="mb-4 pb-2 text-lg font-bold">Redes Sociales</h2>
+          <div class="flex gap-2">
+            <a href="#" class="hover:opacity-75">
+              <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="hover:opacity-75">
+              <i data-lucide="facebook" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="hover:opacity-75">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </a>
+            <a href="mailto:info@socksmania.es" class="hover:opacity-75">
+              <i data-lucide="twitter" class="w-6 h-6"></i>
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
